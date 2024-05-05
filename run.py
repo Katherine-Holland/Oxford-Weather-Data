@@ -18,8 +18,9 @@ def display_menu():
     print("1. Compare sun hours for a specific month")
     print("2. Compare rainfall for a specific month")
     print("3. Compare maximum temperature for a specific month")
-    print("4. Exit")
-    choice = input("Enter your choice (1-4): ")
+    print("4. Compare minimum temperature for a specific month")
+    print("5. Exit")
+    choice = input("Enter your choice (1-5): ")
     return choice
 
 # Function to compare sun hours for 1950 and 2022
@@ -100,7 +101,7 @@ def compare_rain_mm():
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Function to compare max temp for the years 1950 and 2022
+# Function to compare maximum temperature for the years 1950 and 2022
 def compare_max_temp():
     """
     Asks the user to input a month number and compares the maximum temperature for that month for the years 1950 and 2022.
@@ -139,6 +140,46 @@ def compare_max_temp():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+
+# Function to compare minimum temperature for the years 1950 and 2022
+def compare_min_temp():
+    """
+    Asks the user to input a month number and compares the minimum temperature for that month for the years 1950 and 2022.
+    """
+    print("Please input a month number to compare the minimum temperature for 1950 and 2022.")
+    print("Example: January would be entered as 1, February as 2, etc.")
+    try:
+        month = int(input("Enter the month number (1-12): "))
+        if not 1 <= month <= 12:
+            print("Invalid month. Please enter a number between 1 and 12.")
+            return
+
+        # Access worksheets for both years
+        sheet_1950 = SHEET.worksheet("1950")
+        sheet_2022 = SHEET.worksheet("2022")
+
+        # Fetch minimum temperature for the given month from each sheet
+        # Google Sheets header text is on line 1 so add 1 to row index because of header row.
+        # Minimum temperature is in column C (column 3).
+        row_index = month + 1
+        min_temp_1950 = int(sheet_1950.cell(row_index, 3).value) 
+        min_temp_2022 = int(sheet_2022.cell(row_index, 3).value)  
+
+        # Print comparison
+        print(f"Minimum temperature in {month} 1950: {min_temp_1950}")
+        print(f"Minimum temperature in {month} 2022: {min_temp_2022}")
+        if min_temp_1950 < min_temp_2022:
+            print(f"Cooler in 1950 ({min_temp_1950}) than in 2022 ({min_temp_2022}).")
+        elif min_temp_1950 > min_temp_2022:
+            print(f"Hotter in 1950 ({min_temp_1950}) than in 2022 ({min_temp_2022}).")
+        else:
+            print("The temperature was the same in both years.")
+    except ValueError:
+        print("Please enter a valid integer.")
+        #If there is an error with the execution (eg. Retrieving the Google spreadsheet)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 # Main script to run the programme
 if __name__ == "__main__":
     while True:
@@ -150,7 +191,9 @@ if __name__ == "__main__":
         elif choice == '3':
             compare_max_temp()
         elif choice == '4':
+            compare_min_temp()
+        elif choice == '5':
             print("Exiting...")
             break
         else:
-            print("Invalid choice. Please enter a number between 1 and 4.")
+            print("Invalid choice. Please enter a number between 1 and 5.")
