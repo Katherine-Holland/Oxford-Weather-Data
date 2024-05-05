@@ -11,6 +11,14 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('oxford_weather_data')
+#Function for 'user menu' to select criteria to compare
+def display_menu():
+    print("Please select an option:")
+    print("1. Compare sun hours for a specific month")
+    print("2. Compare rainfall for a specific month")
+    print("3. Exit")
+    choice = input("Enter your choice (1-3): ")
+    return choice
 
 # Function to compare sun hours for 1950 and 2022
 def compare_sun_hours():
@@ -51,10 +59,6 @@ def compare_sun_hours():
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Script is executed directly not via another script
-if __name__ == "__main__":
-    compare_sun_hours()
-
 # Function to compare rainfall for the years 1950 and 2022
 def compare_rain_mm():
     """
@@ -94,6 +98,16 @@ def compare_rain_mm():
     except Exception as e:
         print(f"An error occurred: {e}")
 
-# Script is executed directly not via another script
+# Main script to run the programme
 if __name__ == "__main__":
-    compare_rain_mm()
+    while True:
+        choice = display_menu()
+        if choice == '1':
+            compare_sun_hours()
+        elif choice == '2':
+            compare_rain_mm()
+        elif choice == '3':
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 3.")
