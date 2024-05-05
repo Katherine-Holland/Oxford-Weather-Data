@@ -55,7 +55,7 @@ def compare_sun_hours():
 if __name__ == "__main__":
     compare_sun_hours()
 
-
+# Function to compare rainfall for the years 1950 and 2022
 def compare_rain_mm():
     """
     Asks the user to input a month number and compares rainfall for that month for the years 1950 and 2022.
