@@ -11,6 +11,10 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('oxford_weather_data')
 
+# List of month names for conversion
+MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+               "July", "August", "September", "October", "November", "December"]
+
 #Functions to compare data from 1950 and 2022:
 
 def display_menu():
@@ -53,13 +57,15 @@ def compare_data(data_type, column):
     month = get_month_input()
     if month is None:
         return
+    month_name = MONTH_NAMES[month - 1]
 
     data_1950, data_2022 = fetch_data(month, column)
     if data_1950 is None:  # If fetching data has failed
         return
 
-    print(f"\n{data_type.capitalize()} in {month} 1950: {data_1950}")
-    print(f"{data_type.capitalize()} in {month} 2022: {data_2022}")
+    print(f"\n{data_type.capitalize()} in {month_name} 1950: {data_1950}")
+    print(f"{data_type.capitalize()} in {month_name} 2022: {data_2022}")
+    
     if data_1950 < data_2022:
         print(f"More {data_type} in 2022.")
     elif data_1950 > data_2022:
