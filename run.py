@@ -24,12 +24,12 @@ def display_menu():
                "4. Compare minimum temperature", "5. Exit"]
     for option in options:
         print(option)
-    return input("Enter your choice (1-5): ")
+    return input("Enter your choice (1-5):\n ")
 
 def get_month_input():
     """Get and validate month input from the user."""
     try:
-        month = int(input("Please input a month number (1-12): "))
+        month = int(input("Please input a month number (1-12):\n "))
         if 1 <= month <= 12:
             return month
         else:
