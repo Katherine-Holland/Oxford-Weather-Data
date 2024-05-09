@@ -34,7 +34,7 @@ def get_month_input():
         if 1 <= month <= current_month:
             return month
         else:
-            print(f"Invalid month. Please enter a number between 1 and {current_month}.")
+            print(f"That month is in the future! Please enter a number between 1 and {current_month}.")
             return None
     except ValueError:
         print("Please enter a valid number for month.")
@@ -115,7 +115,7 @@ def main():
         elif choice == '4':
             compare_data("minimum temperature", 3)
         elif choice == '5':
-            input_weather_data()  # New option to input weather data
+            input_weather_data() 
         elif choice == '6':
             print("Exiting...")
             break
