@@ -1,17 +1,47 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Code Institute PP3
 
-Welcome,
+# Oxford Weather Data
+![mock-up]()
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+A Code Institute Project (PP3). Visit the live site [here](https://oxfordweatherdata-1a975addda17.herokuapp.com/).
 
-## Reminders
+Contents
+1. [Introduction](#introduction)
+2. [Design](#design)
+3. [Features](#features)
+4. [Manual Testing](#testing)
+6. [Deployment](#deployment)
+6. [Future Features](#future)
+7. [Credits](#credits) 
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
 
-## Creating the Heroku app
+## Introduction
 
+**User:**
+
+
+## Design
+The wireframe was created using Balsamiq. 
+
+## Features
+Below are the core functions and elements I incorporated into the site.
+
+### Functions
+
+![Image]()
+
+
+### Main script
+I created a simple quiz for children who wanted to learn more about snails. This game is followed by a link to the Natural History Museum's guide to snails, allowing the audience to find out more from an established authority on Natural History. 
+This quiz was created around a similar code structure to the Code Institute tutorial 'Rock , Paper, Scissors', using an array and a scoring system based on the correct answer being chosen.
+
+### Refactoring
+
+![Image]() 
+
+
+## Deployment
+I deployed the site via Heroku. 
 When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
 
 1. `heroku/python`
@@ -23,10 +53,38 @@ If you have credentials, such as in the Love Sandwiches project, you must create
 
 Connect your GitHub repository and deploy as normal.
 
-## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+## Manual Testing
+1. I tested it using two popular browsers, Chrome and Firefox, both of which worked as expected.
+![Console]()
 
----
 
-Happy coding!
+**Pep8ci**
+
+The site passed through validation successfully.
+![pep8ci](assets/)
+
+
+## Future Features
+1. 
+2.  
+3. 
+4. 
+5. 
+
+## Credits
+My mentor Spencer Bariball.
+
+## Images:
+**Wireframe:**
+https://balsamiq.com/
+
+## Website Validators:
+https://pep8ci.herokuapp.com/
+
+## Tutorials & Advice:
+https://www.w3schools.com/
+
+Code Institute - Love Sandwiches project.
+
+**Google Charts:**
