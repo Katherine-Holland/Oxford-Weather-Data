@@ -12,13 +12,15 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('oxford_weather_data')
 
 # List of month names for conversion
-MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
-               "July", "August", "September", "October", "November", "December"]
-
-#Functions to compare data from 1950 and 2022:
+MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July",
+                "August", "September", "October", "November", "December"]
+ 
+ # Functions to compare data from 1950 and 2022:
 
 def display_menu():
+    
     """Display the menu options for the user to choose."""
+
     print("\nWelcome to the Oxford Weather comparison tool, comparing the weather from 1950 with 2022. Please select an option:")
     options = ["1. Compare sun hours", "2. Compare rainfall", "3. Compare maximum temperature",
                "4. Compare minimum temperature", "5. Exit"]
