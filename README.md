@@ -18,7 +18,7 @@ Contents
 ## Introduction
 
 **User:**
-
+This site has been designed to allow users to compare weather data by month in Oxford, for the years 1950 and 2022. This includes the monthly sun hours, rainfall in millimetres and the minimum and maximum temperatures. This weather data was extracted from the Met Office UK database. The site is for users who are interested in comparing weather data, such as students.
 
 ## Design
 The wireframe was created using Balsamiq. 
@@ -26,14 +26,16 @@ The wireframe was created using Balsamiq.
 ## Features
 Below are the core functions and elements I incorporated into the site.
 
+## Google Sheets 
+
+
 ### Functions
 
 ![Image]()
 
 
 ### Main script
-I created a simple quiz for children who wanted to learn more about snails. This game is followed by a link to the Natural History Museum's guide to snails, allowing the audience to find out more from an established authority on Natural History. 
-This quiz was created around a similar code structure to the Code Institute tutorial 'Rock , Paper, Scissors', using an array and a scoring system based on the correct answer being chosen.
+
 
 ### Refactoring
 
@@ -66,11 +68,7 @@ The site passed through validation successfully.
 
 
 ## Future Features
-1. 
-2.  
-3. 
-4. 
-5. 
+The site could be expanded into a list of locations across the U.K and the years could also be expanded across a wider range.
 
 ## Credits
 My mentor Spencer Bariball.
