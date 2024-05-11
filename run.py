@@ -21,10 +21,10 @@ def display_menu():
     """Display the menu options for the user to choose."""
     print("\nWelcome to the Oxford Weather comparison tool. Please select an option:")
     options = ["1. Compare sun hours", "2. Compare rainfall", "3. Compare maximum temperature",
-               "4. Compare minimum temperature", "5. Input new weather data for 2024", "6. Exit"]
+               "4. Compare minimum temperature", "5. Input new weather data for 2024"]
     for option in options:
         print(option)
-    return input("Enter your choice (1-6):\n ")
+    return input("Enter your choice (1-5):\n ")
 
 def get_month_input():
     """Get and validate month input from the user."""
@@ -116,8 +116,6 @@ def main():
             compare_data("minimum temperature", 3)
         elif choice == '5':
             input_weather_data() 
-        elif choice == '6':
-            print("Exiting...")
             break
         else:
             print("Invalid choice. Please enter a number between 1 and 6.")
