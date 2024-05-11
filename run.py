@@ -126,8 +126,10 @@ def delete_weather_data(month):
             print("Data successfully deleted for {} 2024.".format(MONTH_NAMES[month-1]))
         except Exception as e:
             print(f"An error occurred: {e}")
+    elif confirm == 'no':
+        print("Data deletion cancelled.")
     else:
-        print("Data deletion canceled.")
+        print("Invalid input. Please enter 'yes' or 'no'.")
 
 def main():
     while True:
@@ -147,5 +149,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
