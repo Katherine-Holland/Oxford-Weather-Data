@@ -39,6 +39,40 @@ def get_month_input():
         print("Please enter a valid number for month.")
         return None
 
+def fetch_data(month, column):
+    """Fetch the data from the spreadsheet for a given month and column."""
+    try:
+        sheet_1950 = SHEET.worksheet("1950")
+        sheet_2022 = SHEET.worksheet("2022")
+        row_index = month + 1  # Adjusted for header row
+        data_1950 = int(sheet_1950.cell(row_index, column).value)
+        data_2022 = int(sheet_2022.cell(row_index, column).value)
+        return data_1950, data_2022
+    except Exception as e:
+        print(f"An error occurred while fetching data: {e}")
+        return None, None
+
+def compare_data(data_type, column):
+    """General function comparing weather data."""
+    month = get_month_input()
+    if month is None:
+        return
+    month_name = MONTH_NAMES[month - 1]
+
+    data_1950, data_2022 = fetch_data(month, column)
+    if data_1950 is None:  # If fetching data has failed
+        return
+
+    print(f"\n{data_type.capitalize()} in {month_name} 1950: {data_1950}")
+    print(f"{data_type.capitalize()} in {month_name} 2022: {data_2022}")
+    
+    if data_1950 < data_2022:
+        print(f"More {data_type} in 2022.")
+    elif data_1950 > data_2022:
+        print(f"More {data_type} in 1950.")
+    else:
+        print(f"The {data_type} is the same in both years.")
+
 def input_or_delete_data():
     """Choose whether to input or delete data for a month."""
     print("\n1. Input new data\n2. Delete existing data")
@@ -77,19 +111,23 @@ def input_weather_data(month):
 
 def delete_weather_data(month):
     """Function to delete existing weather data for 2024, for a specified month."""
-    try:
-        sheet_2024 = SHEET.worksheet("2024")
-        row_index = month + 1
+    sheet_2024 = SHEET.worksheet("2024")
+    row_index = month + 1
 
-        # Clearing data from the row
-        sheet_2024.update_cell(row_index, 2, "")
-        sheet_2024.update_cell(row_index, 3, "")
-        sheet_2024.update_cell(row_index, 4, "")
-        sheet_2024.update_cell(row_index, 5, "")
+    confirm = input(f"Are you sure you want to delete the data for {MONTH_NAMES[month-1]} 2024? (yes/no): \n").lower()
+    if confirm == 'yes':
+        try:
+            # Clearing data from the row
+            sheet_2024.update_cell(row_index, 2, "")
+            sheet_2024.update_cell(row_index, 3, "")
+            sheet_2024.update_cell(row_index, 4, "")
+            sheet_2024.update_cell(row_index, 5, "")
 
-        print("Data successfully deleted for {} 2024.".format(MONTH_NAMES[month-1]))
-    except Exception as e:
-        print(f"An error occurred: {e}")
+            print("Data successfully deleted for {} 2024.".format(MONTH_NAMES[month-1]))
+        except Exception as e:
+            print(f"An error occurred: {e}")
+    else:
+        print("Data deletion canceled.")
 
 def main():
     while True:
@@ -109,4 +147,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
