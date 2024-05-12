@@ -153,5 +153,5 @@ def main():
             input_or_delete_data()
         else:
             print("Invalid choice. Please enter a number between 1 and 5.")
-    if __name__ == "__main__":
-    main()
+        if __name__ == "__main__":
+             main()
