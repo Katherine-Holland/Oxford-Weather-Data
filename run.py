@@ -114,22 +114,30 @@ def delete_weather_data(month):
     sheet_2024 = SHEET.worksheet("2024")
     row_index = month + 1
 
-    confirm = input(f"Are you sure you want to delete the data for {MONTH_NAMES[month-1]} 2024? (yes/no): \n").lower()
-    if confirm == 'yes':
-        try:
-            # Clearing data from the row
-            sheet_2024.update_cell(row_index, 2, "")
-            sheet_2024.update_cell(row_index, 3, "")
-            sheet_2024.update_cell(row_index, 4, "")
-            sheet_2024.update_cell(row_index, 5, "")
+    attempts = 0
+    while attempts < 2:
+        confirm = input(f"Are you sure you want to delete the data for {MONTH_NAMES[month-1]} 2024? (yes/no): \n").lower()
+        if confirm == 'yes':
+            try:
+                # Clearing data from the row
+                sheet_2024.update_cell(row_index, 2, "")
+                sheet_2024.update_cell(row_index, 3, "")
+                sheet_2024.update_cell(row_index, 4, "")
+                sheet_2024.update_cell(row_index, 5, "")
+                print("Data successfully deleted for {} 2024.".format(MONTH_NAMES[month-1]))
+                break
+            except Exception as e:
+                print(f"An error occurred: {e}")
+                break
+        elif confirm == 'no':
+            print("Data deletion cancelled.")
+            break
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
+            attempts += 1
+            if attempts == 2:
+                print("Returning to the main menu after 2 failed attempts.")
 
-            print("Data successfully deleted for {} 2024.".format(MONTH_NAMES[month-1]))
-        except Exception as e:
-            print(f"An error occurred: {e}")
-    elif confirm == 'no':
-        print("Data deletion cancelled.")
-    else:
-        print("Invalid input. Please enter 'yes' or 'no'.")
 
 def main():
     while True:
