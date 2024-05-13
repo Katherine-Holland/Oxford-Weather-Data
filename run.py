@@ -45,8 +45,10 @@ def fetch_data(month, column):
         sheet_1950 = SHEET.worksheet("1950")
         sheet_2022 = SHEET.worksheet("2022")
         row_index = month + 1  # Adjusted for header row
-        data_1950 = int(sheet_1950.cell(row_index, column).value)
-        data_2022 = int(sheet_2022.cell(row_index, column).value)
+        value_1950 = sheet_1950.cell(row_index, column).value
+        value_2022 = sheet_2022.cell(row_index, column).value
+        data_1950 = int(value_1950) if value_1950.isdigit() else None
+        data_2022 = int(value_2022) if value_2022.isdigit() else None
         return data_1950, data_2022
     except Exception as e:
         print(f"An error occurred while fetching data: {e}")
@@ -60,18 +62,26 @@ def compare_data(data_type, column):
     month_name = MONTH_NAMES[month - 1]
 
     data_1950, data_2022 = fetch_data(month, column)
-    if data_1950 is None:  # If fetching data has failed
+    if data_1950 is None and data_2022 is None:
+        print(f"No data available for {data_type} in {month_name} 1950 and 2022.")
         return
+    elif data_1950 is None:
+        print(f"No data available for {data_type} in {month_name} 1950.")
+    elif data_2022 is None:
+        print(f"No data available for {data_type} in {month_name} 2022.")
 
-    print(f"\n{data_type.capitalize()} in {month_name} 1950: {data_1950}")
-    print(f"{data_type.capitalize()} in {month_name} 2022: {data_2022}")
-    
-    if data_1950 < data_2022:
-        print(f"More {data_type} in 2022.")
-    elif data_1950 > data_2022:
-        print(f"More {data_type} in 1950.")
-    else:
-        print(f"The {data_type} is the same in both years.")
+    if data_1950 is not None:
+        print(f"\n{data_type.capitalize()} in {month_name} 1950: {data_1950}")
+    if data_2022 is not None:
+        print(f"{data_type.capitalize()} in {month_name} 2022: {data_2022}")
+
+    if data_1950 and data_2022:
+        if data_1950 < data_2022:
+            print(f"More {data_type} in 2022.")
+        elif data_1950 > data_2022:
+            print(f"More {data_type} in 1950.")
+        else:
+            print(f"The {data_type} is the same in both years.")
 
 def input_or_delete_data():
     """Choose whether to input or delete data for a month."""
@@ -152,7 +162,11 @@ def main():
         elif choice == '5':
             input_or_delete_data()
         else:
-            print("Invalid choice. Please enter a number between 1 and 5.")
+            print("Invalid choice. Please choose between 1 and 5.")
+        more = input("Would you like to perform another operation? (yes/no): \n").lower()
+        if more != 'yes':
+            print("Goodbye!")
+            break
 
 if __name__ == "__main__":
     main()
