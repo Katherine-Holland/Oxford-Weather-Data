@@ -163,10 +163,6 @@ def main():
             input_or_delete_data()
         else:
             print("Invalid choice. Please choose between 1 and 5.")
-        more = input("Would you like to perform another operation? (yes/no): \n").lower()
-        if more != 'yes':
-            print("Goodbye!")
-            break
-
+    
 if __name__ == "__main__":
     main()
