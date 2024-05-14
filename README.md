@@ -125,7 +125,20 @@ Code Institute - Love Sandwiches project.
 
 
 
-
+|Test Summary|Resolved?|Action Taken|
+|---|---|---|
+|Issue with chart  |  Y |  Modified code |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
 
 
 
