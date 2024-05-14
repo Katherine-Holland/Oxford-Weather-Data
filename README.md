@@ -18,35 +18,31 @@ Contents
 ## Introduction
 
 **User:**
-This site has been designed to allow users to compare weather data by month in Oxford, for the years 1950 and 2022. This includes the monthly sun hours, rainfall in millimetres and the minimum and maximum temperatures. This weather data was extracted from the Met Office UK database. The site is for users who are interested in comparing weather data, such as students.
+This application has been designed to allow users to compare weather data by month in Oxford, for the years 1950 and 2022. This includes the monthly sun hours, rainfall in millimetres and the minimum and maximum temperatures. This weather data was extracted from the Met Office UK database. The site is for users who are interested in comparing weather data, such as students and researchers who want insights from weather data for these years and who want to add to the data for 2024.
+**Site Owner:**
+The application provides data for 1950 and 2022 and allows the user to compare data. The application also allows users to input and delete new data for 2024.
 
 ## Design
-The wireframe was created using Balsamiq. 
+This project is a command-line application, deployed via Heroku, that allows users to manage and research a weather dataset. The data is retrieved from linked Google Sheets.
 
 ## Features
 Below are the core functions and elements I incorporated into the site.
 
 ## Google Sheets 
-
+I followed the Code Institute "Love Sandwiches" tutorial to ensure my Google Sheet was linked up to my project correctly. I have three sheets within the data set: 1950, 2022 and the current year 2024. The data for 1950 and 2022 cannot be modified and can only be used for research purposes. The 2024 sheet however, allows the user to add and delete data as appropriate. More information on the code functions can be found below.
 
 ### Functions
+The application includes a number of functions outlined below:
+1. Display menu
+2. Get month input
+3. Fetch data
+4. Compare data
+5. Input or delete data
+6. Input weather data
+7. Delete weather data
 
 ![Image]()
-Add in adding data to sheet
 
-To allow the user to input weather data onto a Google Spreadsheet, you need to create a function to capture user input and write it to the correct sheet, ensuring it's validated and limited to the current month. Here's what you need to do:
-
-Add a Menu Option to Input Data:
-Update the menu to include an option for users to input new data.
-Create a Function to Get User Data:
-Create a function to ask the user for the required data (month, sun hours, min temp, max temp, rainfall).
-Round User Inputs:
-If the input is a decimal, round it to the nearest whole number.
-Validate User Input:
-Ensure the month is valid (between 1 and the current month), and the values are numbers.
-Add Data to Google Sheet:
-Write the input data to the appropriate row and column in the Google Sheet.
-User testing
 
 ### Main script
 
@@ -56,16 +52,7 @@ I put my main script to execute under the function and not below all the functio
 ### Refactoring
 
 ![Image]() 
-Testing: 
 
-refactoring the code - Type error:
-Modify compare_data Function
-
-You should modify the compare_data function so that it doesn't expect the month as a parameter since it's getting the month inside the function already. 
-
-Modify Calls in main() Function
-
-Adjust the calls in the main() function to remove the unnecessary month argument, as it's now handled within compare_data
 
 ## Deployment
 I deployed the site via Heroku. These are the steps I followed, using the Code Institute 'Love Sandwiches" project to guide me.
@@ -92,26 +79,34 @@ Removed exiting as it wasnt needed from the main memu after deployment and it di
 ## Manual Testing
 1. I tested it using two popular browsers, Chrome and Firefox, both of which worked as expected.
 ![Console]()
-2. deleting data from the sheet
-bugs - exiting if yes or no is answered with the wrong words back to main screen with invalid input. 
-I added a while loop to allow two attempts before defaulting to the main menu.
-I added return instrqad of break to add clear exit points for the user and reduce the chance of the programme looping incorrectly.
 
-**Pep8ci**
 
-The site passed through validation successfully.
-![pep8ci](assets/)
+|Test Summary|Resolved?|Action Taken|
+|---|---|---|
+|Issue with chart  |  Y |  Modified code |
+| Improve user experience. Function: delete_weather_data. Issue: If exiting the menu and 'yes'
+or 'no' isn't typed exactly, the user is thrown out of the loop and back to the main menu. |  Y | Add a while loop to allow user two attempts before defaulting to the main menu.|
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+|   |   |   |
+Type error:
+During refactoring the code bug: Modify compare_data Function
 
+modify the compare_data function so that it doesn't expect the month as a parameter since it's getting the month inside the function already. 
+
+Modify Calls in main() Function
+
+Adjust the calls in the main() function to remove the unnecessary month argument, as it's now handled within compare_data
 
 ## Future Features
 The site could be expanded into a list of locations across the U.K and the years could also be expanded across a wider range.
-
-## Credits
-My mentor Spencer Bariball.
-
-## Images:
-**Wireframe:**
-https://balsamiq.com/
 
 ## Website Validators:
 https://pep8ci.herokuapp.com/
@@ -121,27 +116,10 @@ https://www.w3schools.com/
 
 Code Institute - Love Sandwiches project.
 
-**Google Charts:**
+Google Charts
 
-
-
-|Test Summary|Resolved?|Action Taken|
-|---|---|---|
-|Issue with chart  |  Y |  Modified code |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
-
-
-
+## Credits
+My mentor Spencer Bariball.
 
 
 

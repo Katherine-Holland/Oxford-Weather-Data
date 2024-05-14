@@ -135,19 +135,19 @@ def delete_weather_data(month):
                 sheet_2024.update_cell(row_index, 4, "")
                 sheet_2024.update_cell(row_index, 5, "")
                 print("Data successfully deleted for {} 2024.".format(MONTH_NAMES[month-1]))
-                break
+                return
             except Exception as e:
                 print(f"An error occurred: {e}")
-                break
+                return
         elif confirm == 'no':
             print("Data deletion cancelled.")
-            break
+            return
         else:
             print("Invalid input. Please enter 'yes' or 'no'.")
             attempts += 1
             if attempts == 2:
                 print("Returning to the main menu after 2 failed attempts.")
-
+            return
 def main():
     while True:
         choice = display_menu()
