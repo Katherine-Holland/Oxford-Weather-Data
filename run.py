@@ -13,18 +13,21 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('oxford_weather_data')
 
 # List of month names for conversion
-MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July",
-               "August", "September", "October", "November", "December"]
-
+MONTH_NAMES = [
+    "January", "February", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December"
+]
 
 def display_menu():
     """Display the menu options for the user to choose."""
     print("\nWelcome to the Oxford Weather comparison tool. Select an option:")
-    options = ["1. Compare sun hours",
-               "2. Compare rainfall",
-               "3. Compare maximum temperature",
-               "4. Compare minimum temperature",
-               "5. Input or delete weather data for 2024"]
+    options = [
+        "1. Compare sun hours",
+        "2. Compare rainfall",
+        "3. Compare maximum temperature",
+        "4. Compare minimum temperature",
+        "5. Input or delete weather data for 2024"
+    ]
     for option in options:
         print(option)
     return input("Enter your choice (1-5):\n ")
@@ -54,8 +57,10 @@ def fetch_data(month, column):
         row_index = month + 1  # Adjusted for header row
         value_1950 = sheet_1950.cell(row_index, column).value
         value_2022 = sheet_2022.cell(row_index, column).value
-        data_1950 = int(value_1950) if value_1950.isdigit() else None
-        data_2022 = int(value_2022) if value_2022.isdigit() else None
+        
+        data_1950 = int(value_1950) if value_1950 and value_1950.isdigit() else None
+        data_2022 = int(value_2022) if value_2022 and value_2022.isdigit() else None
+        
         return data_1950, data_2022
     except Exception as e:
         print(f"An error occurred while fetching data: {e}")
