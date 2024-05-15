@@ -85,8 +85,8 @@ Removed exiting as it wasnt needed from the main memu after deployment and it di
 |---|---|---|
 |EXAMPLE Issue with chart  |  Y |  Modified code |
 | Improve user experience. Function: delete_weather_data. Issue: If exiting the menu and 'yes' or 'no' isn't typed exactly, the user is thrown out of the loop and back to the main menu. |  Y | Add a while loop to allow user two attempts before defaulting to the main menu.|
-|   |   |   |
-|   |   |   |
+|Retrieving data with no cell value. Function: compare  Issue: If the data returns none it specifies an error   |Y   |Added to function to allow none to be displayed   |
+|Issue: 2024 sheet : You can overwrite data without a warning   |   |   |
 |   |   |   |
 |   |   |   |
 |   |   |   |

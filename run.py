@@ -32,7 +32,6 @@ def display_menu():
         print(option)
     return input("Enter your choice (1-5):\n ")
 
-
 def get_month_input():
     """Get and validate month input from the user."""
     try:
@@ -47,7 +46,6 @@ def get_month_input():
     except ValueError:
         print("Please enter a valid number for month.")
         return None
-
 
 def fetch_data(month, column):
     """Fetch the data from the spreadsheet for a given month and column."""
@@ -65,7 +63,6 @@ def fetch_data(month, column):
     except Exception as e:
         print(f"An error occurred while fetching data: {e}")
         return None, None
-
 
 def compare_data(data_type, column):
     """General function comparing weather data."""
@@ -96,7 +93,6 @@ def compare_data(data_type, column):
         else:
             print(f"The {data_type} is the same in both years.")
 
-
 def input_or_delete_data():
     """Choose whether to input or delete data for a month."""
     print("\n1. Input new data\n2. Delete existing data")
@@ -111,17 +107,29 @@ def input_or_delete_data():
     else:
         print("Invalid choice. Please enter 1 or 2.")
 
-
 def input_weather_data(month):
     """Function to input new weather data for 2024, for a specified month."""
     try:
-        sun_hours = round(float(input("Enter sun hours: ")))
-        min_temp = round(float(input("Enter minimum temperature: ")))
-        max_temp = round(float(input("Enter maximum temperature: ")))
-        rain_mm = round(float(input("Enter rainfall in mm: ")))
-
         sheet_2024 = SHEET.worksheet("2024")
         row_index = month + 1
+
+        # Check if there is existing data
+        existing_data = [
+            sheet_2024.cell(row_index, col).value
+            for col in range(2, 6)
+        ]
+        if any(existing_data):
+            confirm = input(
+                "Existing data found. Overwrite? (y/n):\n"
+            ).lower()
+            if confirm != 'y':
+                print("Data input cancelled.")
+                return
+
+        sun_hours = round(float(input("Enter sun hours: ")))
+        min_temp = round(float(input("Enter min temperature: ")))
+        max_temp = round(float(input("Enter max temperature: ")))
+        rain_mm = round(float(input("Enter rainfall in mm: ")))
 
         sheet_2024.update_cell(row_index, 2, max_temp)
         sheet_2024.update_cell(row_index, 3, min_temp)
@@ -135,7 +143,6 @@ def input_weather_data(month):
     except Exception as e:
         print(f"An error occurred: {e}")
 
-
 def delete_weather_data(month):
     """Function to delete data for 2024, for a specified month."""
     sheet_2024 = SHEET.worksheet("2024")
@@ -143,7 +150,9 @@ def delete_weather_data(month):
 
     attempts = 0
     while attempts < 2:
-        confirm = input(f"delete {MONTH_NAMES[month-1]} 2024? (y/n):\n").lower()
+        confirm = input(
+            f"delete {MONTH_NAMES[month-1]} 2024? (y/n):\n"
+        ).lower()
                         
         if confirm == 'y':
             try:
@@ -167,7 +176,6 @@ def delete_weather_data(month):
             
     print("Returning to the main menu after 2 failed attempts.")
 
-
 def main():
     """We need some docstring here!!!"""
     while True:
@@ -184,7 +192,6 @@ def main():
             input_or_delete_data()
         else:
             print("Invalid choice. Please choose between 1 and 5.")
-
 
 if __name__ == "__main__":
     main()
