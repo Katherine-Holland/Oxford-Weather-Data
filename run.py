@@ -16,14 +16,19 @@ SHEET = GSPREAD_CLIENT.open('oxford_weather_data')
 MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July",
                "August", "September", "October", "November", "December"]
 
+
 def display_menu():
     """Display the menu options for the user to choose."""
-    print("\nWelcome to the Oxford Weather comparison tool. Please select an option:")
-    options = ["1. Compare sun hours", "2. Compare rainfall", "3. Compare maximum temperature",
-               "4. Compare minimum temperature", "5. Input or delete weather data for 2024"]
+    print("\nWelcome to the Oxford Weather comparison tool. Select an option:")
+    options = ["1. Compare sun hours",
+               "2. Compare rainfall",
+               "3. Compare maximum temperature",
+               "4. Compare minimum temperature",
+               "5. Input or delete weather data for 2024"]
     for option in options:
         print(option)
     return input("Enter your choice (1-5):\n ")
+
 
 def get_month_input():
     """Get and validate month input from the user."""
@@ -33,11 +38,13 @@ def get_month_input():
         if 1 <= month <= current_month:
             return month
         else:
-            print(f"That month is in the future! Please enter a number between 1 and {current_month}.")
+            print("That month is in the future!)
+            print(f"Please enter a number between 1 and {current_month}.")
             return None
     except ValueError:
         print("Please enter a valid number for month.")
         return None
+
 
 def fetch_data(month, column):
     """Fetch the data from the spreadsheet for a given month and column."""
@@ -54,6 +61,7 @@ def fetch_data(month, column):
         print(f"An error occurred while fetching data: {e}")
         return None, None
 
+
 def compare_data(data_type, column):
     """General function comparing weather data."""
     month = get_month_input()
@@ -63,12 +71,12 @@ def compare_data(data_type, column):
 
     data_1950, data_2022 = fetch_data(month, column)
     if data_1950 is None and data_2022 is None:
-        print(f"No data available for {data_type} in {month_name} 1950 and 2022.")
+        print(f"No data available for {data_type} in {month_name}.")
         return
     elif data_1950 is None:
-        print(f"No data available for {data_type} in {month_name} 1950.")
+        print(f"No data for {data_type} in {month_name} 1950.")
     elif data_2022 is None:
-        print(f"No data available for {data_type} in {month_name} 2022.")
+        print(f"No data for {data_type} in {month_name} 2022.")
 
     if data_1950 is not None:
         print(f"\n{data_type.capitalize()} in {month_name} 1950: {data_1950}")
@@ -83,6 +91,7 @@ def compare_data(data_type, column):
         else:
             print(f"The {data_type} is the same in both years.")
 
+
 def input_or_delete_data():
     """Choose whether to input or delete data for a month."""
     print("\n1. Input new data\n2. Delete existing data")
@@ -96,6 +105,7 @@ def input_or_delete_data():
         delete_weather_data(month)
     else:
         print("Invalid choice. Please enter 1 or 2.")
+
 
 def input_weather_data(month):
     """Function to input new weather data for 2024, for a specified month."""
@@ -113,20 +123,23 @@ def input_weather_data(month):
         sheet_2024.update_cell(row_index, 4, rain_mm)
         sheet_2024.update_cell(row_index, 5, sun_hours)
 
-        print("Data successfully added for {} 2024.".format(MONTH_NAMES[month-1]))
+        memo = format(MONTH_NAMES[month-1])
+        print(f"Data successfully added for {memo} 2024.")
     except ValueError:
         print("Please enter valid numerical values.")
     except Exception as e:
         print(f"An error occurred: {e}")
 
+
 def delete_weather_data(month):
-    """Function to delete existing weather data for 2024, for a specified month."""
+    """Function to delete data for 2024, for a specified month."""
     sheet_2024 = SHEET.worksheet("2024")
     row_index = month + 1
 
     attempts = 0
     while attempts < 2:
-        confirm = input(f"Are you sure you want to delete the data for {MONTH_NAMES[month-1]} 2024? (yes/no): \n").lower()
+        confirm = input(f"Are you sure you want to delete the data for
+                        {MONTH_NAMES[month-1]} 2024? (yes/no): \n").lower()
         if confirm == 'yes':
             try:
                 # Clearing data from the row
@@ -134,7 +147,8 @@ def delete_weather_data(month):
                 sheet_2024.update_cell(row_index, 3, "")
                 sheet_2024.update_cell(row_index, 4, "")
                 sheet_2024.update_cell(row_index, 5, "")
-                print("Data successfully deleted for {} 2024.".format(MONTH_NAMES[month-1]))
+                month_deleted = format(MONTH_NAMES[month-1])
+                print(f"Data successfully deleted for {month_deleted} 2024.")
                 return
             except Exception as e:
                 print(f"An error occurred: {e}")
@@ -148,7 +162,10 @@ def delete_weather_data(month):
             if attempts == 2:
                 print("Returning to the main menu after 2 failed attempts.")
             return
+
+
 def main():
+    """We need some docstring here!!!"""
     while True:
         choice = display_menu()
         if choice == '1':
@@ -163,6 +180,7 @@ def main():
             input_or_delete_data()
         else:
             print("Invalid choice. Please choose between 1 and 5.")
-    
+
+
 if __name__ == "__main__":
     main()
