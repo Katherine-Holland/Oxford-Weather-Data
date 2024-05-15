@@ -138,7 +138,7 @@ def delete_weather_data(month):
 
     attempts = 0
     while attempts < 2:
-        confirm = input(f"delete {MONTH_NAMES[month-1]}2024?(y/n):\n").lower()
+        confirm = input(f"delete {MONTH_NAMES[month-1]} 2024? (y/n):\n").lower()
                         
         if confirm == 'y':
             try:
@@ -147,7 +147,7 @@ def delete_weather_data(month):
                 sheet_2024.update_cell(row_index, 3, "")
                 sheet_2024.update_cell(row_index, 4, "")
                 sheet_2024.update_cell(row_index, 5, "")
-                month_deleted = format(MONTH_NAMES[month-1])
+                month_deleted = MONTH_NAMES[month-1]
                 print(f"Data successfully deleted for {month_deleted} 2024.")
                 return
             except Exception as e:
@@ -159,9 +159,8 @@ def delete_weather_data(month):
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
             attempts += 1
-            if attempts == 2:
-                print("Returning to the main menu after 2 failed attempts.")
-            return
+            
+    print("Returning to the main menu after 2 failed attempts.")
 
 
 def main():
