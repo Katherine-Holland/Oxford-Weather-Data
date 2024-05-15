@@ -38,7 +38,7 @@ def get_month_input():
         if 1 <= month <= current_month:
             return month
         else:
-            print("That month is in the future!)
+            print("That month is in the future!")
             print(f"Please enter a number between 1 and {current_month}.")
             return None
     except ValueError:
