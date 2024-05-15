@@ -177,7 +177,7 @@ def delete_weather_data(month):
     print("Returning to the main menu after 2 failed attempts.")
 
 def main():
-    """We need some docstring here!!!"""
+    """Main menu for the user to choose from a list of options"""
     while True:
         choice = display_menu()
         if choice == '1':
