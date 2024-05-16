@@ -106,6 +106,7 @@ def input_or_delete_data():
         delete_weather_data(month)
     else:
         print("Invalid choice. Please enter 1 or 2.")
+        attempts += 1
 
 def input_weather_data(month):
     """Function to input new weather data for 2024, for a specified month."""

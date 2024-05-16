@@ -52,7 +52,14 @@ I put my main script to execute under the function and not below all the functio
 ### Refactoring
 
 ![Image]() 
+Type error:
+During refactoring the code bug: Modify compare_data Function
 
+modify the compare_data function so that it doesn't expect the month as a parameter since it's getting the month inside the function already. 
+
+Modify Calls in main() Function
+
+Adjust the calls in the main() function to remove the unnecessary month argument, as it's now handled within compare_data
 
 ## Deployment
 I deployed the site via Heroku. These are the steps I followed, using the Code Institute 'Love Sandwiches" project to guide me.
@@ -86,7 +93,8 @@ Removed exiting as it wasnt needed from the main memu after deployment and it di
 |EXAMPLE Issue with chart  |  Y |  Modified code |
 | Improve user experience. Function: delete_weather_data. Issue: If exiting the menu and 'yes' or 'no' isn't typed exactly, the user is thrown out of the loop and back to the main menu. |  Y | Add a while loop to allow user two attempts before defaulting to the main menu.|
 |Retrieving data with no cell value. Function: compare  Issue: If the data returns none it specifies an error   |Y   |Added to function to allow none to be displayed   |
-|Issue: 2024 sheet : You can overwrite data without a warning   |   |   |
+|Issue: 2024 sheet : You can overwrite data without a warning   | Y  |   |
+|Issue: Input or delete data function leaves loop if invalid month number is added and returns to main screen    | Y  |   |
 |   |   |   |
 |   |   |   |
 |   |   |   |
@@ -94,15 +102,7 @@ Removed exiting as it wasnt needed from the main memu after deployment and it di
 |   |   |   |
 |   |   |   |
 |   |   |   |
-|   |   |   |
-Type error:
-During refactoring the code bug: Modify compare_data Function
 
-modify the compare_data function so that it doesn't expect the month as a parameter since it's getting the month inside the function already. 
-
-Modify Calls in main() Function
-
-Adjust the calls in the main() function to remove the unnecessary month argument, as it's now handled within compare_data
 
 ## Future Features
 The site could be expanded into a list of locations across the U.K and the years could also be expanded across a wider range.
