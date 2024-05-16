@@ -30,14 +30,14 @@ def display_menu():
     ]
     for option in options:
         print(option)
-    return input("Enter your choice (1-5):\n ")
+    return input("Enter your choice (1-5):\n ").strip()
 
 def get_month_input():
     """Get and validate month input from the user with one retry attempt."""
     attempts = 0
     while attempts < 2:
         try:
-            month = int(input("Please input a month number (1-12):\n "))
+            month = int(input("Please input a month number (1-12):\n ").strip())
             current_month = datetime.now().month  # Get the current month
             if 1 <= month <= current_month:
                 return month
@@ -101,7 +101,7 @@ def input_or_delete_data():
     attempts = 0
     while attempts < 2:
         print("\n1. Input new data\n2. Delete existing data")
-        choice = input("Choose an option (1-2):\n ")
+        choice = input("Choose an option (1-2):\n ").strip()
         month = get_month_input()
         if month is None:
             return
@@ -132,15 +132,15 @@ def input_weather_data(month):
             if any(existing_data):
                 confirm = input(
                     "Existing data found. Overwrite? (y/n):\n"
-                ).lower()
+                ).strip().lower()
                 if confirm != 'y':
                     print("Data input cancelled.")
                     return
 
-            sun_hours = round(float(input("Enter sun hours: ")))
-            min_temp = round(float(input("Enter min temperature: ")))
-            max_temp = round(float(input("Enter max temperature: ")))
-            rain_mm = round(float(input("Enter rainfall in mm: ")))
+            sun_hours = round(float(input("Enter sun hours: ").strip()))
+            min_temp = round(float(input("Enter min temperature: ").strip()))
+            max_temp = round(float(input("Enter max temperature: ").strip()))
+            rain_mm = round(float(input("Enter rainfall in mm: ").strip()))
 
             sheet_2024.update_cell(row_index, 2, max_temp)
             sheet_2024.update_cell(row_index, 3, min_temp)
@@ -166,7 +166,7 @@ def delete_weather_data(month):
     while attempts < 2:
         confirm = input(
             f"delete {MONTH_NAMES[month-1]} 2024? (y/n):\n"
-        ).lower()
+        ).strip().lower()
                         
         if confirm == 'y':
             try:
