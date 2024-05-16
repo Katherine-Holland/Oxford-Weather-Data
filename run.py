@@ -102,15 +102,16 @@ def input_or_delete_data():
     while attempts < 2:
         print("\n1. Input new data\n2. Delete existing data")
         choice = input("Choose an option (1-2):\n ").strip()
-        month = get_month_input()
-        if month is None:
-            return
-        if choice == '1':
-            input_weather_data(month)
-            return
-        elif choice == '2':
-            delete_weather_data(month)
-            return
+        if choice in ['1', '2']:
+            month = get_month_input()
+            if month is None:
+                return
+            if choice == '1':
+                input_weather_data(month)
+                return
+            elif choice == '2':
+                delete_weather_data(month)
+                return
         else:
             print("Invalid choice. Please enter 1 or 2.")
         attempts += 1
