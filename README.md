@@ -28,8 +28,12 @@ This project is a command-line application, deployed via Heroku, that allows use
 ## Features
 Below are the core functions and elements I incorporated into the site.
 
-## Google Sheets 
+## Google Sheets
+From my personal Google account, I created a Google Sheet and called it oxford_weather_data. I populated three sheets. The first was a sheet for 1950 data, the second for 2022 data and the third for the user to input or delete data for the current year (2024). 
+I used data for this project from the Met Office station data for Oxford (link in the credits below)
+
 I followed the Code Institute "Love Sandwiches" tutorial to ensure my Google Sheet was linked up to my project correctly. I have three sheets within the data set: 1950, 2022 and the current year 2024. The data for 1950 and 2022 cannot be modified and can only be used for research purposes. The 2024 sheet however, allows the user to add and delete data as appropriate. More information on the code functions can be found below.
+To link up my Google Sheets API to my GitHub project I used two dependencies, google-auth and the gspread library.
 
 ### Functions
 The application includes a number of functions outlined below:
@@ -64,24 +68,11 @@ Adjust the calls in the main() function to remove the unnecessary month argument
 ## Deployment
 I deployed the site via Heroku. These are the steps I followed, using the Code Institute 'Love Sandwiches" project to guide me.
 1. Within the Heroku dashboard I created a new app and called it Oxford-Weather-Data. 
-2. I selected my location and created the app.
-3. 
-
-
-
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-Testing:
-Removed exiting as it wasnt needed from the main memu after deployment and it didn’t have a use.
+2. I selected my region and created the app.
+3. I went to the settings tab and entered my environment variables (config vars). This included the CREDS.json file and the PORT with the value of 8000.
+4. I then added two build pack dependencies in this order: Python and NodeJs.
+5. I then went to the deploy section and selected GitHub. I searched for my GitHub repository and clicked connect to link up my code.
+6. I decided to manually deploy my app via deploy branch and successfully deployed it.
 
 ## Manual Testing
 1. I tested it using two popular browsers, Chrome and Firefox, both of which worked as expected.
@@ -119,7 +110,7 @@ Google Charts
 
 ## Credits
 My mentor Spencer Bariball for his continued support and expertise.
-
+The Met Office Oxford Weather Station data: [text](https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/oxforddata.txt)
 
 
 
