@@ -39,18 +39,16 @@ def get_month_input(year):
     attempts = 0
     while attempts < 2:
         try:
-            month = int(input("Input a month number (1-12):\n ").strip())
-            if year == 2024:
-                current_month = datetime.now().month  # Get the current month for 2024
-                if 1 <= month <= current_month:
-                    return month
-                else:
-                    print("That month is in the future!")
-                    print(f"Please enter a number between 1 and {current_month}.")
-            elif 1 <= month <= 12:  # For historical data, allow any month
+            month = int(input(f"Input a month number (1-12) for the year {year}:\n").strip())
+            # Get the current month and year
+            current_year = datetime.now().year
+            current_month = datetime.now().month if current_year == year else 12
+
+            if 1 <= month <= current_month:
                 return month
             else:
-                print("Invalid month. Please enter a number between 1 and 12.")
+                print("That month is in the future!")
+                print(f"Please enter a number between 1 and {current_month}.")
         except ValueError:
             print("Please enter a valid number for month.")
         attempts += 1
