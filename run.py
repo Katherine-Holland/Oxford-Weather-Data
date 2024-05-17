@@ -34,7 +34,7 @@ def display_menu():
     return input("Enter your choice (1-5):\n ").strip()
 
 
-get_month_input(year=None):
+def get_month_input(year=None):
     """Get and validate month input from the user with one retry attempt."""
     attempts = 0
     while attempts < 2:
