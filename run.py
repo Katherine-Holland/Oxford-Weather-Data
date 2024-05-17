@@ -21,7 +21,7 @@ MONTH_NAMES = [
 
 def display_menu():
     """Display the menu options for the user to choose."""
-    print("\nWelcome to the Oxford Weather comparison tool. Select an option:")
+    print("\nWelcome to the Oxford Weather 1950/2022 comparison tool. Choose:")
     options = [
         "1. Compare sun hours",
         "2. Compare rainfall",
@@ -40,7 +40,7 @@ def get_month_input(year=None):
     while attempts < 2:
         try:
             year_string = f" for the year {year}" if year else ""
-            month = int(input(f"Input a month number (1-12){year_string}:\n").strip()) 
+            month = int(input(f"Input number (1-12){year_string}:\n").strip())
             # Get the current month and year
             current_year = datetime.now().year
             current_month = datetime.now().month
@@ -50,7 +50,7 @@ def get_month_input(year=None):
                     return month
                 else:
                     print("That month is in the future!")
-                    print(f"Please enter a number between 1 and {current_month}.")
+                    print(f"Enter a number between 1 and {current_month}.")
             # Allow any month between 1 and 12 for historical data
             else:
                 if 1 <= month <= 12:
