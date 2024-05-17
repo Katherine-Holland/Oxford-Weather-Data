@@ -135,17 +135,24 @@ I deployed the site via Heroku. These are the steps I followed, using the Code I
 |Test Summary|Resolved?|Action Taken|
 |---|---|---|
 |Debugging  | Y |   |
-| Improve user experience. Function: delete_weather_data. Issue: If exiting the menu and 'yes' or 'no' isn't typed exactly, the user is thrown out of the loop and back to the main menu. |  Y | Add a while loop to allow user two attempts before defaulting to the main menu.|
+|Improve user experience. Function: delete_weather_data. Issue: If exiting the menu and 'yes' or 'no' isn't typed exactly, the user is thrown out of the loop and back to the main menu. |  Y | Add a while loop to allow user two attempts before defaulting to the main menu.|
 |Retrieving data with no cell value. Function: compare  Issue: If the data returns none it specifies an error   |Y   |Added to function to allow none to be displayed|
 |Issue: 2024 sheet : You can overwrite data without a warning   | Y  | Added in an option for the user to respond y or n to the arning that data was about to be overriden.|
 |Issue: Input or delete data function leaves loop if invalid month number is added and returns to main screen    | Y  | Added in the number of attempts the user is given to allow a second chance before returning to the main menu.  |
 |Issue: Error when whitespace was added before user input| Y  | Added .strip to inputs to avoid errors and improve user experience|
-| Issue: Compare data function was refactored and uses generic message '"More {data_type} in (year) however this doesn't read well for maximum and minimum temperatures | N  | Future Fix to modify general function to allow 'Hotter' and "Cooler'.|
-|  Issue: Input data for 2024 or delete existing data accepts an invalid entry which isn't 1 or 2 | Y  |Added a loop which only accepts 1 or 2 as an input|
-|   |   |   |
-|   |   |   |
-|   |   |   |
-|   |   |   |
+|Issue: Compare data function was refactored and uses generic message '"More {data_type} in (year) however this doesn't read well for maximum and minimum temperatures | N  | Future Fix to modify general function to allow 'Hotter' and "Cooler'.|
+|Issue: Input data for 2024 or delete existing data accepts an invalid entry which isn't 1 or 2 | Y  |Added a loop which only accepts 1 or 2 as an input|
+|Testing: compare sun hours|Y|The sun hours reflect the data accurately|
+|Testing: compare rainfall|Y|The rainfall data is correct|
+|Testing: compare maximum temperature|Y| The maximum temperature result is correct|
+|Testing: compare minimum temperature|Y| The minimum temperature result is correct but the 'More minimum temperature' as a response needs to be amended to 'hotter in'to make sense to the user|
+|Testing: input weather data via over write|Y|When over writing data the response asks the user to check if they want to overwrite, when overwritten the data is added to the Google Sheet|
+|Testing: input new weather data|Y|The data is added successfully to the Google Sheet for 2024|
+|Testing: delete existing data|Y|The user is prompted to delete the data and the Google Sheet is successfully updated with data removed|
+|Testing: delete existing data from an empty month|N|The script still runs through the steps and says data successfully deleted when no data is present|
+|Testing: entering invalid integer and trailing whitespace into the main menu|Y|The script responds with invalid choice and returns to the menu|
+|Testing: entering random letters into the main menu|Y|Invalid choice is printed and the user returns to the main menu|
+|Testing:|entering invalid numbers multiple times into the sun hours choice|Y|Returns to main menu after 2 failed attempts|
 
 
 ## Future Features
