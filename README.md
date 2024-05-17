@@ -114,7 +114,7 @@ Purpose: Main menu function for the user to choose from a list of options.
 Behaviour: Continuously displays the main menu, takes the user's choice, and calls the appropriate function to handle the request. Validates the user's choice and prompts for re-entry if invalid.
 
 ### Refactoring
-After writing my functions, I decided I could refactor the compare data function. However, this has caused an issue with the generated responses which don't always read in the correct grammar. For example "More -maximum temperature- in 2022" which doesn't read correctly although it works for "More sun hours" and "More rainfall". See testing below.
+After writing my functions, I decided I could refactor the compare data function. However, this has caused an issue with the generated responses which don't always read in the correct grammar. For example "More -maximum temperature- in 2022" isn't the correct grammar, although it works for "More sun hours" and "More rainfall". See testing below.
 
 ## Deployment
 I deployed the site via Heroku. These are the steps I followed, using the Code Institute 'Love Sandwiches" project to guide me.
