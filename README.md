@@ -126,19 +126,19 @@ I deployed the site via Heroku. These are the steps I followed, using the Code I
 6. I decided to manually deploy my app via deploy branch and successfully deployed it.
 
 ## Manual Testing
-1. I tested it using two popular browsers, Chrome and Firefox, both of which worked as expected.
-![Console]()
+1. I tested it using two browsers, Chrome and Firefox, both of which worked as expected.
 
 |Test Summary|Resolved?|Action Taken|
 |---|---|---|
-|Debugging  | Y |   |
-|Improve user experience. Function: delete_weather_data. Issue: If exiting the menu and 'yes' or 'no' isn't typed exactly, the user is thrown out of the loop and back to the main menu. |  Y | Add a while loop to allow user two attempts before defaulting to the main menu.|
-|Retrieving data with no cell value. Function: compare  Issue: If the data returns none it specifies an error   |Y   |Added to function to allow none to be displayed|
-|Issue: 2024 sheet : You can overwrite data without a warning   | Y  | Added in an option for the user to respond y or n to the arning that data was about to be overriden.|
-|Issue: Input or delete data function leaves loop if invalid month number is added and returns to main screen    | Y  | Added in the number of attempts the user is given to allow a second chance before returning to the main menu.  |
+|**Debugging**  |  |   |
+|Improve user experience. Function: delete_weather_data. Issue: If exiting the menu and 'yes' or 'no' isn't typed exactly, the user is thrown out of the loop and back to the main menu. |Y| Add a while loop to allow user two attempts before defaulting to the main menu.|
+|Retrieving data with no cell value. Function: compare data. Issue: If the data returns none it specifies an error|Y |Added to function to allow none to be displayed|
+|Issue: 2024 sheet : You can overwrite data without a warning|Y| Added in an option for the user to respond y or n to the warning that data was about to be overriden.|
+|Issue: Input or delete data function leaves loop if invalid month number is added and returns to main screen|Y| Added in the number of attempts the user is given to allow a second chance before returning to the main menu.|
 |Issue: Error when whitespace was added before user input| Y  | Added .strip to inputs to avoid errors and improve user experience|
 |Issue: Compare data function was refactored and uses generic message '"More {data_type} in (year) however this doesn't read well for maximum and minimum temperatures | N  | Future Fix to modify general function to allow 'Hotter' and "Cooler'.|
-|Issue: Input data for 2024 or delete existing data accepts an invalid entry which isn't 1 or 2 | Y  |Added a loop which only accepts 1 or 2 as an input|
+|Issue: Input data for 2024 or delete existing data accepts an invalid entry which isn't 1 or 2 | Y |Added a loop which only accepts 1 or 2 as an input|
+|**Testing**| | |
 |Testing: compare sun hours|Y|The sun hours reflect the data accurately|
 |Testing: compare rainfall|Y|The rainfall data is correct|
 |Testing: compare maximum temperature|Y| The maximum temperature result is correct|
@@ -167,7 +167,7 @@ https://pep8ci.herokuapp.com/
 ## Tutorials & Advice:
 W3 Schools (Python Date Time) [Link](https://www.w3schools.com/python/python_datetime.asp)
 
-Code Institute - Love Sandwiches project
+Code Institute - Love Sandwiches project.
 
 Replit 100 days of Python tutorials: [Link](https://replit.com/learn/100-days-of-python)
 
