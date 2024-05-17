@@ -70,48 +70,48 @@ SHEET = GSPREAD_CLIENT.open('oxford_weather_data')
 
 4) Finally I added test data to see if the sheet was connected.
 
-### Functions
+## Functions
 The application includes a number of functions outlined below:
 
-1) display_menu()
+1) **display_menu()**
 Purpose: Displays the menu options for the user to choose from.
 Returns: The user's choice as a string, stripped of any leading or trailing whitespace.
 
-2) get_month_input()
+2) **get_month_input()**
 Purpose: Prompts the user to input a month number and validates the input, allowing one retry attempt.
 Returns: The validated month number as an integer or None if invalid input is provided after two attempts.
 
-3) fetch_data(month, column)
+3) **fetch_data(month, column)**
 Purpose: Fetches weather data from the spreadsheet for a given month and column.
 Parameters:
 month: The month number (1-12).
 column: The column number from which to fetch data.
 Returns: A tuple containing the data for the specified month from 1950 and 2022 as integers, or None if the data is invalid.
 
-4) compare_data(data_type, column)
+4) **compare_data(data_type, column)**
 Purpose: Compares weather data (e.g., sun hours, rainfall, maximum temperature, minimum temperature) between 1950 and 2022 for a specified month.
 Parameters:
 data_type: A string describing the type of data being compared.
 column: The column number from which to fetch the data.
 Behaviour: Prompts the user for a month, fetches the corresponding data, and prints a comparison between the years 1950 and 2022.
 
-5) input_or_delete_data()
+5) **input_or_delete_data()**
 Purpose: Allows the user to choose whether to input new weather data or delete existing data for a specified month, with one retry attempt.
 Behaviour: Prompts the user to choose an option (input or delete), validates the choice, and then calls the corresponding function to handle the data.
 
-6) input_weather_data(month)
+6) **input_weather_data(month)**
 Purpose: Inputs new weather data for the year 2024 for a specified month, with one retry attempt.
 Parameters:
 month: The month number (1-12) for which data is to be inputted.
 Behaviour: Prompts the user for new data values (sun hours, minimum temperature, maximum temperature, rainfall), validates the input, and updates the spreadsheet.
 
-7) delete_weather_data(month)
+7) **delete_weather_data(month)**
 Purpose: Deletes existing weather data for the year 2024 for a specified month, with one retry attempt.
 Parameters:
 month: The month number (1-12) for which data is to be deleted.
 Behaviour: Prompts the user to confirm data deletion, validates the input, and clears the data from the spreadsheet if confirmed.
 
-8) main()
+8) **main()**
 Purpose: Main menu function for the user to choose from a list of options.
 Behaviour: Continuously displays the main menu, takes the user's choice, and calls the appropriate function to handle the request. Validates the user's choice and prompts for re-entry if invalid.
 
