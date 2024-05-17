@@ -18,6 +18,7 @@ MONTH_NAMES = [
     "August", "September", "October", "November", "December"
 ]
 
+
 def display_menu():
     """Display the menu options for the user to choose."""
     print("\nWelcome to the Oxford Weather comparison tool. Select an option:")
@@ -32,12 +33,13 @@ def display_menu():
         print(option)
     return input("Enter your choice (1-5):\n ").strip()
 
+
 def get_month_input():
     """Get and validate month input from the user with one retry attempt."""
     attempts = 0
     while attempts < 2:
         try:
-            month = int(input("Please input a month number (1-12):\n ").strip())
+            month = int(input("Input a month number (1-12):\n ").strip())
             current_month = datetime.now().month  # Get the current month
             if 1 <= month <= current_month:
                 return month
@@ -50,6 +52,7 @@ def get_month_input():
     print("Returning to the main menu after 2 failed attempts.")
     return None
 
+
 def fetch_data(month, column):
     """Fetch the data from the spreadsheet for a given month and column."""
     try:
@@ -58,14 +61,15 @@ def fetch_data(month, column):
         row_index = month + 1  # Adjusted for header row
         value_1950 = sheet_1950.cell(row_index, column).value
         value_2022 = sheet_2022.cell(row_index, column).value
-        
-        data_1950 = int(value_1950) if value_1950 and value_1950.isdigit() else None
-        data_2022 = int(value_2022) if value_2022 and value_2022.isdigit() else None
-        
+        data_1950 = (int(value_1950) if value_1950 and value_1950.isdigit()
+                     else None)
+        data_2022 = (int(value_2022) if value_2022 and value_2022.isdigit()
+                     else None)
         return data_1950, data_2022
     except Exception as e:
         print(f"An error occurred while fetching data: {e}")
         return None, None
+
 
 def compare_data(data_type, column):
     """General function comparing weather data."""
@@ -96,8 +100,9 @@ def compare_data(data_type, column):
         else:
             print(f"The {data_type} is the same in both years.")
 
+
 def input_or_delete_data():
-    """Choose whether to input or delete data for a month with one retry attempt."""
+    """Choose to input or delete data for a month with one retry attempt."""
     attempts = 0
     while attempts < 2:
         print("\n1. Input new data\n2. Delete existing data")
@@ -117,8 +122,9 @@ def input_or_delete_data():
         attempts += 1
     print("Returning to the main menu after 2 failed attempts.")
 
+
 def input_weather_data(month):
-    """Function to input new weather data for 2024, for a specified month with one retry attempt."""
+    """Input 2024 weather data, for specified month - one retry attempt."""
     attempts = 0
     while attempts < 2:
         try:
@@ -158,17 +164,16 @@ def input_weather_data(month):
         attempts += 1
     print("Returning to the main menu after 2 failed attempts.")
 
+
 def delete_weather_data(month):
-    """Function to delete data for 2024, for a specified month with one retry attempt."""
+    """Delete data for 2024, for a specified month with one retry attempt."""
     sheet_2024 = SHEET.worksheet("2024")
     row_index = month + 1
-
     attempts = 0
     while attempts < 2:
         confirm = input(
             f"delete {MONTH_NAMES[month-1]} 2024? (y/n):\n"
         ).strip().lower()
-                        
         if confirm == 'y':
             try:
                 # Clearing data from the row
@@ -190,6 +195,7 @@ def delete_weather_data(month):
         attempts += 1
     print("Returning to the main menu after 2 failed attempts.")
 
+
 def main():
     """Main menu for the user to choose from a list of options"""
     while True:
@@ -206,6 +212,7 @@ def main():
             input_or_delete_data()
         else:
             print("Invalid choice. Please choose between 1 and 5.")
+
 
 if __name__ == "__main__":
     main()
