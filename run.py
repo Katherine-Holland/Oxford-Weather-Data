@@ -40,11 +40,13 @@ def get_month_input(year=None):
     while attempts < 2:
         try:
             year_string = f" for the year {year}" if year else ""
-            month = int(input(f"Input a month number (1-12){year_string}:\n").strip())
+            month = int(input(f"Input number (1-12){year_string}:\n").strip())
             # Get the current month and year
             current_year = datetime.now().year
-            current_month = datetime.now().month if current_year == year else 12
-
+            if current_year == year:
+                current_month = datetime.now().month
+            else:
+                current_month = 12
             if 1 <= month <= current_month:
                 return month
             else:
