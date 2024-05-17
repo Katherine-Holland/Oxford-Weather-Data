@@ -34,18 +34,23 @@ def display_menu():
     return input("Enter your choice (1-5):\n ").strip()
 
 
-def get_month_input():
+def get_month_input(year):
     """Get and validate month input from the user with one retry attempt."""
     attempts = 0
     while attempts < 2:
         try:
             month = int(input("Input a month number (1-12):\n ").strip())
-            current_month = datetime.now().month  # Get the current month
-            if 1 <= month <= current_month:
+            if year == 2024:
+                current_month = datetime.now().month  # Get the current month for 2024
+                if 1 <= month <= current_month:
+                    return month
+                else:
+                    print("That month is in the future!")
+                    print(f"Please enter a number between 1 and {current_month}.")
+            elif 1 <= month <= 12:  # For historical data, allow any month
                 return month
             else:
-                print("That month is in the future!")
-                print(f"Please enter a number between 1 and {current_month}.")
+                print("Invalid month. Please enter a number between 1 and 12.")
         except ValueError:
             print("Please enter a valid number for month.")
         attempts += 1
