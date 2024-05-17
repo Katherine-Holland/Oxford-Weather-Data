@@ -1,6 +1,6 @@
 # Code Institute PP3
 
-# Oxford Weather Data
+# Oxford Weather Data Comparison Tool
 ![mock-up]()
 
 A Code Institute Project (PP3). Visit the live site [here](https://oxfordweatherdata-1a975addda17.herokuapp.com/).
@@ -18,12 +18,13 @@ Contents
 ## Introduction
 
 **User:**
-This application has been designed to allow users to compare weather data by month in Oxford, for the years 1950 and 2022. This includes the monthly sun hours, rainfall in millimetres and the minimum and maximum temperatures. 
-This weather data was extracted from the Met Office UK database. 
+The Oxford Weather Data Comparison Tool allows users to compare monthly weather data (sun hours, rainfall, minimum and maximum temperatures) for Oxford for the years 1950 and 2022. Users can also input and delete weather data for the year 2024. 
 The site is for users who are interested in comparing weather data, such as students and researchers who want insights from weather data for these years and who want to add to the data for 2024.
 
 **Site Owner:**
 The application provides data for 1950 and 2022 and allows the user to compare data. The application also allows users to input and delete new data for 2024.
+
+This weather data was extracted from the Met Office UK database. 
 
 ## Design
 This project is a command-line application, deployed via Heroku, that allows users to manage and research a weather dataset. The data is retrieved from a linked Google Sheet.
@@ -71,38 +72,51 @@ SHEET = GSPREAD_CLIENT.open('oxford_weather_data')
 
 ### Functions
 The application includes a number of functions outlined below:
-1. Display menu
-2. Get month input
-3. Fetch data
-4. Compare data
-5. Input or delete data
 
-6. Input weather data
-I added in a line of code to the top of mu run.py file: 
-from datetime import datetime 
-This allowed me to set the date to allow for the user to only be able to inut data up to the current month.
+1) display_menu()
+Purpose: Displays the menu options for the user to choose from.
+Returns: The user's choice as a string, stripped of any leading or trailing whitespace.
 
-7. Delete weather data
+2) get_month_input()
+Purpose: Prompts the user to input a month number and validates the input, allowing one retry attempt.
+Returns: The validated month number as an integer or None if invalid input is provided after two attempts.
 
-![Image]()
+3) fetch_data(month, column)
+Purpose: Fetches weather data from the spreadsheet for a given month and column.
+Parameters:
+month: The month number (1-12).
+column: The column number from which to fetch data.
+Returns: A tuple containing the data for the specified month from 1950 and 2022 as integers, or None if the data is invalid.
 
+4) compare_data(data_type, column)
+Purpose: Compares weather data (e.g., sun hours, rainfall, maximum temperature, minimum temperature) between 1950 and 2022 for a specified month.
+Parameters:
+data_type: A string describing the type of data being compared.
+column: The column number from which to fetch the data.
+Behaviour: Prompts the user for a month, fetches the corresponding data, and prints a comparison between the years 1950 and 2022.
 
-### Main script
+5) input_or_delete_data()
+Purpose: Allows the user to choose whether to input new weather data or delete existing data for a specified month, with one retry attempt.
+Behaviour: Prompts the user to choose an option (input or delete), validates the choice, and then calls the corresponding function to handle the data.
 
-Testing:
-I put my main script to execute under the function and not below all the functions so compare_sun_hours threw an error of not defined.  see screenshots.
+6) input_weather_data(month)
+Purpose: Inputs new weather data for the year 2024 for a specified month, with one retry attempt.
+Parameters:
+month: The month number (1-12) for which data is to be inputted.
+Behaviour: Prompts the user for new data values (sun hours, minimum temperature, maximum temperature, rainfall), validates the input, and updates the spreadsheet.
+
+7) delete_weather_data(month)
+Purpose: Deletes existing weather data for the year 2024 for a specified month, with one retry attempt.
+Parameters:
+month: The month number (1-12) for which data is to be deleted.
+Behaviour: Prompts the user to confirm data deletion, validates the input, and clears the data from the spreadsheet if confirmed.
+
+8) main()
+Purpose: Main menu function for the user to choose from a list of options.
+Behaviour: Continuously displays the main menu, takes the user's choice, and calls the appropriate function to handle the request. Validates the user's choice and prompts for re-entry if invalid.
 
 ### Refactoring
-
-![Image]() 
-Type error:
-During refactoring the code bug: Modify compare_data Function
-
-modify the compare_data function so that it doesn't expect the month as a parameter since it's getting the month inside the function already. 
-
-Modify Calls in main() Function
-
-Adjust the calls in the main() function to remove the unnecessary month argument, as it's now handled within compare_data
+After writing my functions, I decided I could refactor the compare data function. However, this has caused an issue with the generated responses which don't always read in the correct grammar. For example "More -maximum temperature- in 2022" which doesn't read correctly although it works for "More sun hours" and "More rainfall". See testing below.
 
 ## Deployment
 I deployed the site via Heroku. These are the steps I followed, using the Code Institute 'Love Sandwiches" project to guide me.
@@ -136,18 +150,23 @@ I deployed the site via Heroku. These are the steps I followed, using the Code I
 
 ## Future Features
 The site could be expanded into a list of locations across the U.K and the years could also be expanded across a wider range.
+**Functionality:**
+1) The user data for 2024 could become immutable after a certain time limit had passed.
+2) Data could be added to historical dates if new data was discovered or more columns needed to be added.
+3) The user could see the results of their input in the command line after entry.
+4) The user could export data via PDF for example.
 
 ## Website Validators:
 https://pep8ci.herokuapp.com/
 
 ## Tutorials & Advice:
-https://www.w3schools.com/
+W3 Schools (Python Date Time) [Link](https://www.w3schools.com/python/python_datetime.asp)
 
-Code Institute - Love Sandwiches project.
-Replit 100 days of python tutorials
-Google Sheet
+Code Institute - Love Sandwiches project
 
-## Credits
+Replit 100 days of python tutorials: [Link](https://replit.com/learn/100-days-of-python)
+
+## Credits:
 My mentor Spencer Bariball for his continued support and expertise.
 
 The Met Office Oxford Weather Station data: [Link](https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/oxforddata.txt)
