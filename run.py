@@ -46,7 +46,6 @@ def get_month_input(year=None):
             current_month = datetime.now().month
             if year is None or year == current_year:
                 if 1 <= month <= current_month:
-            if 1 <= month <= current_month:
                 return month
             else:
                 print("That month is in the future!")
