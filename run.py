@@ -34,12 +34,13 @@ def display_menu():
     return input("Enter your choice (1-5):\n ").strip()
 
 
-def get_month_input(year):
+def get_month_input(year=None):
     """Get and validate month input from the user with one retry attempt."""
     attempts = 0
     while attempts < 2:
         try:
-            month = int(input(f"Input a month number (1-12) for the year {year}:\n").strip())
+            year_string = f" for the year {year}" if year else ""
+            month = int(input(f"Input a month number (1-12){year_string}:\n").strip())
             # Get the current month and year
             current_year = datetime.now().year
             current_month = datetime.now().month if current_year == year else 12
