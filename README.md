@@ -1,8 +1,6 @@
 # Code Institute PP3
 
 # Oxford Weather Data Comparison Tool
-![mock-up]()
-
 A Code Institute Project (PP3). Visit the live site [here](https://oxfordweatherdata-1a975addda17.herokuapp.com/).
 
 Contents
@@ -131,7 +129,6 @@ I deployed the site via Heroku. These are the steps I followed, using the Code I
 1. I tested it using two popular browsers, Chrome and Firefox, both of which worked as expected.
 ![Console]()
 
-
 |Test Summary|Resolved?|Action Taken|
 |---|---|---|
 |Debugging  | Y |   |
@@ -149,11 +146,11 @@ I deployed the site via Heroku. These are the steps I followed, using the Code I
 |Testing: input weather data via over write|Y|When over writing data the response asks the user to check if they want to overwrite, when overwritten the data is added to the Google Sheet|
 |Testing: input new weather data|Y|The data is added successfully to the Google Sheet for 2024|
 |Testing: delete existing data|Y|The user is prompted to delete the data and the Google Sheet is successfully updated with data removed|
-|Testing: delete existing data from an empty month|N|The script still runs through the steps and says data successfully deleted when no data is present|
+|Testing: delete existing data from an empty month|N|The script still runs through the steps and says data successfully deleted when no data is present, however this doesn't impact on the user|
 |Testing: entering invalid integer and trailing whitespace into the main menu|Y|The script responds with invalid choice and returns to the menu|
 |Testing: entering random letters into the main menu|Y|Invalid choice is printed and the user returns to the main menu|
-|Testing:|entering invalid numbers multiple times into the sun hours choice|Y|Returns to main menu after 2 failed attempts|
-
+|Testing: entering invalid numbers multiple times into the sun hours choice|Y|Returns to main menu after 2 failed attempts|
+|Testing: adding or deleting data in 2024 after the current month|Y|The user is blocked from entering or deleting future data and asked to enter between 1 - the current month|
 
 ## Future Features
 The site could be expanded into a list of locations across the U.K and the years could also be expanded across a wider range.
@@ -162,6 +159,7 @@ The site could be expanded into a list of locations across the U.K and the years
 2) Data could be added to historical dates if new data was discovered or more columns needed to be added.
 3) The user could see the results of their input in the command line after entry.
 4) The user could export data via PDF for example.
+5) A future fix to tell the user that there is no data present when the user tries to delete empty fields in 2024.
 
 ## Website Validators:
 https://pep8ci.herokuapp.com/
@@ -171,7 +169,7 @@ W3 Schools (Python Date Time) [Link](https://www.w3schools.com/python/python_dat
 
 Code Institute - Love Sandwiches project
 
-Replit 100 days of python tutorials: [Link](https://replit.com/learn/100-days-of-python)
+Replit 100 days of Python tutorials: [Link](https://replit.com/learn/100-days-of-python)
 
 ## Credits:
 My mentor Spencer Bariball for his continued support and expertise.
