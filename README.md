@@ -1,5 +1,5 @@
 # Code Institute PP3
-![Banner(images/oxford.jpg)]
+![Banner](images/oxford.jpg)
 # Oxford Weather Data Comparison Tool
 A Code Institute Project (PP3). Visit the live site [here](https://oxfordweatherdata-1a975addda17.herokuapp.com/).
 
